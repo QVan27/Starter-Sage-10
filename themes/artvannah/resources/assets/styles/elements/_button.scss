@@ -7,12 +7,22 @@
   background-color: $white;
   color: $black;
 
+  &.dark {
+    background-color: $black;
+    color: $white;
+  }
+
   @media (hover: hover) {
     transition: background-color 0.3s linear, color 0.3s linear;
 
     &:hover {
       background-color: $black;
       color: $white;
+
+      &.dark {
+        background-color: darken($color: $white, $amount: 5%);
+        color: $black;
+      }
     }
   }
 }

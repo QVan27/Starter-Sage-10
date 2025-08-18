@@ -1,0 +1,15 @@
+@use '../config' as *;
+
+.b-content-image {
+  padding: $margin-l 0;
+
+  &__image {
+    margin-top: $margin-m;
+  }
+
+  @include media-breakpoint-up(xl) {
+    &__image {
+      margin-top: 0;
+    }
+  }
+}

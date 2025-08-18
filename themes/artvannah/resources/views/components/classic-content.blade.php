@@ -1,3 +1,8 @@
+@php
+    $is_link = isset($is_link) ? $is_link : true;
+    $color = isset($color) ? $color : '';
+@endphp
+
 <div class="c-classic-content">
     @if (!empty($data['titles']))
         <div class="c-classic-content__title">
@@ -13,7 +18,11 @@
 
     @if (!empty($data['button']))
         <div class="c-classic-content__button">
-            @include('elements.button', ['data' => $data['button']])
+            @include('elements.button', [
+                'data' => $data['button'],
+                'is_link' => $is_link,
+                'color' => $color,
+            ])
         </div>
     @endif
 </div>

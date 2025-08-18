@@ -22,9 +22,10 @@ class Block extends Composer
     $data = get_fields();
 
     $blockName = str_replace('blocks.', '', $viewName);
+    $methodName = lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $blockName))));
 
-    if (method_exists($this, $blockName)) {
-      return $this->$blockName($data);
+    if (method_exists($this, $methodName)) {
+      return $this->$methodName($data);
     }
 
     return [
@@ -35,7 +36,7 @@ class Block extends Composer
   public function hero(array $data): array
   {
     return [
-      'image' => Element::image($data['image'], 1920, 'full'),
+      'image' => Element::image($data['image'], 1920),
       'classicContent' => Component::classicContent($data),
     ];
   }
@@ -63,6 +64,14 @@ class Block extends Composer
 
     return [
       'components' => $components
+    ];
+  }
+
+  public function contentImage(array $data): array
+  {
+    return [
+      'image' => Element::image($data['image'], 768),
+      'classicContent' => Component::classicContent($data),
     ];
   }
 }
