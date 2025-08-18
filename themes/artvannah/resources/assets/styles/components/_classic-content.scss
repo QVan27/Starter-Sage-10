@@ -1,8 +1,12 @@
-@use "../config" as *;
+@use '../config' as *;
 
 .c-classic-content {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: flex-start;
+
+  &.center {
+    align-items: center;
+  }
 }

@@ -74,4 +74,11 @@ class Block extends Composer
       'classicContent' => Component::classicContent($data),
     ];
   }
+
+  public function newsletter(array $data): array
+  {
+    return [
+      'classicContent' => Component::classicContent($data),
+    ];
+  }
 }

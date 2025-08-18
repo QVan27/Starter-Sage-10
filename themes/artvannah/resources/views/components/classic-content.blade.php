@@ -1,9 +1,10 @@
 @php
     $is_link = isset($is_link) ? $is_link : true;
     $color = isset($color) ? $color : '';
+    $class = isset($class) ? $class : '';
 @endphp
 
-<div class="c-classic-content">
+<div class="c-classic-content {{ $class }}">
     @if (!empty($data['titles']))
         <div class="c-classic-content__title">
             @include('elements.title', ['data' => $data['titles']])

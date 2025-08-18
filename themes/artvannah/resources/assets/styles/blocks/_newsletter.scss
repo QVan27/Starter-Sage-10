@@ -1,0 +1,7 @@
+@use "../config" as *;
+
+.b-newsletter {
+  padding: $margin-l 0;
+  background-color: $primary;
+  color: $white;
+}
