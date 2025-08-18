@@ -1,1 +1,50 @@
-@use "./breakpoints" as *;
+@use './breakpoints' as *;
+@use './variables' as *;
+
+@mixin title-1() {
+  font: $bold clamp(4.4rem, 3.2rem + 3.3333vw, 8rem)/1.15 $font-heading;
+}
+
+@mixin title-1-medium() {
+  font: $medium clamp(4.4rem, 3.2rem + 3.3333vw, 8rem)/1.15 $font-heading;
+}
+
+@mixin title-2() {
+  font: $bold clamp(3.2rem, 2.4rem + 2.2222vw, 5.6rem)/1.15 $font-heading;
+}
+
+@mixin title-2-medium() {
+  font: $medium clamp(3.2rem, 2.4rem + 2.2222vw, 5.6rem)/1.15 $font-heading;
+}
+
+@mixin title-3() {
+  font: $bold clamp(2.8rem, 2.6rem + 0.3704vw, 3.2rem)/1.15 $font-heading;
+}
+
+@mixin title-3-medium() {
+  font: $medium clamp(2.8rem, 2.6rem + 0.3704vw, 3.2rem)/1.15 $font-heading;
+}
+
+@mixin title-4() {
+  font: $bold clamp(1.8rem, 1.7rem + 0.1852vw, 2rem)/1.15 $font-heading;
+}
+
+@mixin title-4-medium() {
+  font: $medium clamp(1.8rem, 1.7rem + 0.1852vw, 2rem)/1.15 $font-heading;
+}
+
+@mixin body-lg() {
+  font: $normal clamp(1.6rem, 3.2rem + 3.3333vw, 1.8rem)/1.15 $font-default;
+}
+
+@mixin body-lg-light() {
+  font: $light clamp(1.6rem, 3.2rem + 3.3333vw, 1.8rem)/1.15 $font-default;
+}
+
+@mixin body-s() {
+  font: $normal 1.6rem/1.15 $font-default;
+}
+
+@mixin body-s-light() {
+  font: $light 1.6rem/1.15 $font-default;
+}

@@ -2,6 +2,7 @@
 
 html {
   font-size: calc(10 * (100vw / var(--size)));
+  overflow-x: clip;
 
   &.lenis.lenis-stopped { overflow: clip; }
 

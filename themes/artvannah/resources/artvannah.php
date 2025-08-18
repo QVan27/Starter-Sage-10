@@ -285,3 +285,8 @@ add_action('init', function () {
     remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
   }
 });
+
+/**
+ * Hides the admin bar for all users.
+ */
+add_filter('show_admin_bar', '__return_false');

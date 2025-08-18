@@ -29,6 +29,6 @@ $container-max-widths: (
   padding: 0 1rem;
 
   @include media-breakpoint-up(md) {
-    padding: 0 2rem;
+    padding: 0;
   }
 }

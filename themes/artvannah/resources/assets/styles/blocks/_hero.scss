@@ -1,0 +1,19 @@
+@use "../config" as *;
+
+.b-hero {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 4.8rem;
+
+  &__image {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__content {
+    position: relative;
+    color: $white;
+  }
+}
