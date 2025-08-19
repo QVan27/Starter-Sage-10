@@ -81,4 +81,24 @@ class Block extends Composer
       'classicContent' => Component::classicContent($data),
     ];
   }
+
+  public function slider(array $data): array
+  {
+    $slides = $data['items'] ?? [];
+
+    $formattedSlides = [];
+
+    foreach ($slides as $slide) {
+      $formattedSlides[] = [
+        'image'  => Element::image($slide['image'], 1920, null, true),
+        'title'  => $slide['title'],
+        'text'   => $slide['text'],
+        'button' => $slide['button'],
+      ];
+    }
+
+    return [
+      'slides' => $formattedSlides,
+    ];
+  }
 }

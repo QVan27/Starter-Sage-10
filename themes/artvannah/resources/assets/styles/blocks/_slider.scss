@@ -1,0 +1,87 @@
+@use '../config' as *;
+@use '../mixins' as *;
+
+.b-slider {
+  height: 100vh;
+  padding: $margin-l 0;
+  margin: $margin-l 0;
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    overflow: hidden;
+    padding: submargin(24, 2, true);
+    height: calc(100vh - $margin-l * 2);
+  }
+
+  &__images,
+  &__image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  &__images {
+    user-select: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: rgba($primary, 0.4);
+    }
+  }
+
+  &__image {
+    height: 100%;
+
+    &.is-active { z-index: 1; }
+  }
+
+  &__item {
+    position: absolute;
+    inset: 0 0 auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    color: $white;
+    pointer-events: none;
+
+    &.is-active { pointer-events: auto; }
+
+    &-title h2 { @include title-3; }
+  }
+
+  &__pagers {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    &__wrapper { padding: submargin(22, 2, true); }
+
+    &__item { inset-inline-end: 40%; }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &__wrapper {
+      padding: submargin(22, 1, true);
+      flex-direction: row;
+    }
+
+    &__items { width: subcol(20, 10); }
+
+    &__item { inset: auto 0 0 0; }
+  }
+
+  @include media-breakpoint-up(xl) {
+    &__items { width: subcol(20, 8); }
+  }
+}

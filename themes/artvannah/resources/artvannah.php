@@ -64,14 +64,23 @@ add_action('wp_enqueue_scripts', 'remove_gutenberg_styles', 100);
 /**
  * Display svg function
  */
-function display_svg($svg, $getUrl = false)
+function display_svg(string $svg, bool $getUrl = false): string
 {
-  $uri = $getUrl ? get_template_directory_uri() . "/assets/images/svg" : get_template_directory() . "/assets/images/svg";
-  $path = "$uri/$svg.svg";
+  $basePath = get_theme_file_path("resources/assets/images/svg");
+  $baseUri  = get_theme_file_uri("resources/assets/images/svg");
 
-  if ($getUrl) return $path;
-  else if (file_exists($path)) include($path);
-  else throw new Exception("SVG name doesn't exist in /images/svg folder", 1);
+  $filePath = "$basePath/$svg.svg";
+  $fileUri  = "$baseUri/$svg.svg";
+
+  if ($getUrl) {
+    return $fileUri;
+  }
+
+  if (file_exists($filePath)) {
+    return file_get_contents($filePath);
+  }
+
+  throw new Exception("SVG $svg doesn't exist in /resources/assets/images/svg folder", 1);
 }
 
 /**
