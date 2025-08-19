@@ -101,4 +101,21 @@ class Block extends Composer
       'slides' => $formattedSlides,
     ];
   }
+
+  public function postsCarousel(array $data): array
+  {
+    $posts = [];
+
+    if (!empty($data['posts'])) {
+      foreach ($data['posts'] as $post) {
+        $posts[] = Component::postCard($post);
+      }
+    }
+
+    return [
+      'titles' => Element::title($data),
+      'posts'  => $posts,
+      'button' => $data['button'],
+    ];
+  }
 }

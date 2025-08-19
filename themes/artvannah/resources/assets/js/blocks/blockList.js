@@ -13,6 +13,10 @@ const blockList = [
   {
     name: 'b-slider',
     fileName: 'Slider'
+  },
+  {
+    name: 'b-posts-carousel',
+    fileName: 'PostsCarousel'
   }
 ]
 

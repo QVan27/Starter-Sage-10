@@ -47,7 +47,7 @@
                     </div>
                     @endfield
 
-                    <div class="b-slider__pagers">
+                    <div class="b-slider__pagers u-pagers">
                         @include('elements.pager', [
                             'mode' => 'prev',
                             'class' => 'pager--white',

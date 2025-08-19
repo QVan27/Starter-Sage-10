@@ -58,12 +58,6 @@
     &-title h2 { @include title-3; }
   }
 
-  &__pagers {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
   @include media-breakpoint-up(md) {
     &__wrapper { padding: submargin(22, 2, true); }
 

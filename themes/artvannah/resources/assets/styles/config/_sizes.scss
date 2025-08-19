@@ -48,3 +48,11 @@
 @mixin body-s-light() {
   font: $light 1.6rem/1.15 $font-default;
 }
+
+@mixin tag() {
+  font: $normal 1.2rem/1.15 $font-default;
+}
+
+@mixin tag-bold() {
+  font: $bold 1.2rem/1.15 $font-default;
+}

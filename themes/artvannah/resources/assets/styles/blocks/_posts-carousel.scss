@@ -1,0 +1,31 @@
+@use '../config' as *;
+@use '../mixins' as *;
+
+.b-posts-carousel {
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: $margin-m;
+  }
+
+  &__container {
+    padding-left: submargin(24, 0);
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: $margin-m;
+  }
+
+  @include media-breakpoint-up(md) {
+    &__head {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__container { padding-left: submargin(24, 1, true); }
+  }
+}

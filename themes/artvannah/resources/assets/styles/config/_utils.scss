@@ -1,4 +1,6 @@
 @use "../config/breakpoints" as *;
+@use "../config/sizes" as *;
+
 
 .u-nsb {
   /* stylelint-disable-next-line */
@@ -44,3 +46,15 @@
 .u-text-center { text-align: center; }
 
 .u-relative { position: relative; }
+
+.u-font-tag { @include tag; }
+
+.u-font-tag-bold { @include tag-bold; }
+
+.u-flex { display: flex; }
+
+.u-pagers {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

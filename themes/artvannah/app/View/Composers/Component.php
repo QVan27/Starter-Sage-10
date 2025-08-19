@@ -60,4 +60,18 @@ class Component extends Composer
       ]
     ];
   }
+
+  public static function postCard(\WP_Post $post): array
+  {
+    $post_id = $post->ID;
+
+    return [
+      'title'    => get_the_title($post_id),
+      'link'     => get_permalink($post_id),
+      'excerpt'  => get_the_excerpt($post_id),
+      'image'    => Element::image(get_post_thumbnail_id($post_id), 768),
+      'date'     => get_the_date('', $post_id),
+      'category' => get_the_category($post_id)[0]->name ?? null,
+    ];
+  }
 }
