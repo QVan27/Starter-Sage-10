@@ -15,9 +15,14 @@
   }
 
   &__category {
-    border: 1px solid $black;
     padding: 0.4rem 0.6rem;
     border-radius: 2rem;
+    background-color: $black;
+    color: $white;
+  }
+
+  &__excerpt {
+    @include body-s-light;
   }
 
   @media (hover: hover) {
@@ -36,7 +41,16 @@
       }
     }
 
-    &:hover .c-post-card__image::before { opacity: 1; }
+    .c-post-card__category { transition: background-color 0.3s linear, color 0.3s linear; }
+
+    &:hover {
+      .c-post-card__image::before { opacity: 1; }
+
+      .c-post-card__category {
+        background-color: darken($color: $white, $amount: 5%);
+        color: $black;
+      }
+    }
   }
 
   @include media-breakpoint-up(xl) {
