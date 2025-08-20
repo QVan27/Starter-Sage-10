@@ -3,7 +3,6 @@
 .c-post-card {
   &__image {
     user-select: none;
-    min-width: 30rem;
     aspect-ratio: 4 / 5;
   }
 
@@ -21,9 +20,7 @@
     color: $white;
   }
 
-  &__excerpt {
-    @include body-s-light;
-  }
+  &__excerpt { @include body-s-light; }
 
   @media (hover: hover) {
     .c-post-card__image {
@@ -51,9 +48,5 @@
         color: $black;
       }
     }
-  }
-
-  @include media-breakpoint-up(xl) {
-    &__image { min-width: 45rem; }
   }
 }

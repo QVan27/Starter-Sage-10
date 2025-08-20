@@ -19,6 +19,8 @@
     margin-bottom: $margin-m;
   }
 
+  &__post { min-width: 30rem; }
+
   @include media-breakpoint-up(md) {
     &__head {
       flex-direction: row;
@@ -27,5 +29,11 @@
     }
 
     &__container { padding-left: submargin(24, 1, true); }
+
+    &__post { min-width: 30rem; }
+  }
+
+  @include media-breakpoint-up(xl) {
+    &__post { min-width: 45rem; }
   }
 }

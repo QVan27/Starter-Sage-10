@@ -1,0 +1,30 @@
+@use '../config' as *;
+@use '../mixins' as *;
+
+.news {
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $margin-m;
+  }
+
+  &__posts {
+    display: grid;
+    gap: 3rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    &__posts { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &__header { width: subcol(22, 16); }
+
+    &__posts { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @include media-breakpoint-up(xl) {
+    &__header { width: subcol(22, 12); }
+  }
+}

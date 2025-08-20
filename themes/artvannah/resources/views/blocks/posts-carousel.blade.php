@@ -26,17 +26,19 @@
     <div class="b-posts-carousel__container u-nsb">
         <div class="b-posts-carousel__wrapper">
             @foreach ($posts as $post)
-                @include('components.post-card', ['data' => $post])
+                <div class="b-posts-carousel__post">
+                    @include('components.post-card', ['data' => $post])
+                </div>
             @endforeach
         </div>
         <div class="b-posts-carousel__pagers u-pagers">
             @include('elements.pager', [
                 'mode' => 'prev',
-                'class' => 'dashed'
+                'class' => 'dashed',
             ])
             @include('elements.pager', [
                 'mode' => 'next',
-                'class' => 'dashed'
+                'class' => 'dashed',
             ])
         </div>
     </div>
