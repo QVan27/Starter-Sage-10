@@ -6,13 +6,27 @@
   height: 4.8rem;
   pointer-events: all;
   cursor: pointer;
-  overflow: hidden;
+  // overflow: hidden;
   transition: opacity 0.82s $ease-out;
   border-radius: 100%;
   border: 1px solid $black;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &.dashed {
+    border: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 100%;
+      border: 1px dashed $black;
+      transition: transform 0.82s $ease-out;
+    }
+  }
+
 
   &.is-disabled {
     pointer-events: none;
@@ -25,6 +39,8 @@
   &--white {
     color: $white;
     border: 1px solid $white;
+
+    &.dashed::before { border: 1px dashed $white; }
   }
 
   &__arrow {
@@ -43,7 +59,11 @@
     &:hover {
       opacity: 0.3;
 
-      svg { transform: translateX(0.5rem); }
+      svg { transform: translateX(0.5rem) scale(0.8); }
+
+      &::before {
+        transform: scale(0.8) rotate(180deg);
+      }
     } 
   }
 }

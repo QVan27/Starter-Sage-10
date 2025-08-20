@@ -32,9 +32,11 @@
         <div class="b-posts-carousel__pagers u-pagers">
             @include('elements.pager', [
                 'mode' => 'prev',
+                'class' => 'dashed'
             ])
             @include('elements.pager', [
                 'mode' => 'next',
+                'class' => 'dashed'
             ])
         </div>
     </div>
