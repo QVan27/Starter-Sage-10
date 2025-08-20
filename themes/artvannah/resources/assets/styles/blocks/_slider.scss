@@ -3,8 +3,8 @@
 
 .b-slider {
   height: 100vh;
-  padding: $margin-l 0;
-  margin: $margin-l 0;
+  padding: $margin-m 0;
+  margin: $margin-xxl 0;
 
   &__wrapper {
     position: relative;
@@ -14,7 +14,7 @@
     flex-direction: column;
     overflow: hidden;
     padding: submargin(24, 2, true);
-    height: calc(100vh - $margin-l * 2);
+    height: calc(100vh - $margin-m * 2);
   }
 
   &__images,
