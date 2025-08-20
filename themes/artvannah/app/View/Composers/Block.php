@@ -36,7 +36,7 @@ class Block extends Composer
   public function hero(array $data): array
   {
     return [
-      'image' => Element::image($data['image'], 1920),
+      'image' => Element::image($data['image'], '100vw'),
       'classicContent' => Component::classicContent($data),
     ];
   }
@@ -70,7 +70,7 @@ class Block extends Composer
   public function contentImage(array $data): array
   {
     return [
-      'image' => Element::image($data['image'], 768),
+      'image' => Element::image($data['image'], '50vw'),
       'classicContent' => Component::classicContent($data),
     ];
   }
@@ -90,7 +90,7 @@ class Block extends Composer
 
     foreach ($slides as $slide) {
       $formattedSlides[] = [
-        'image'  => Element::image($slide['image'], 1920, null, true),
+        'image'  => Element::image($slide['image'], '100vw', null, true),
         'title'  => $slide['title'],
         'text'   => $slide['text'],
         'button' => $slide['button'],
