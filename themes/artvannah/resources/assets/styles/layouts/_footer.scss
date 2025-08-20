@@ -1,23 +1,15 @@
+@use '../config' as *;
+
 .footer {
-  &__links {
-    &-credit {
-      position: relative;
-      display: inline-block;
-      padding-right: 3rem;
+  background-color: $black;
 
-      .link {
-        display: inline-block;
-        padding: 0 2rem;
-      }
+  &__logo {
+    display: flex;
+    flex-direction: column;
 
-      img {
-        display: inline-block;
-        width: 3rem;
-        height: 3rem;
-        position: absolute;
-        bottom: 50%;
-        transform: translateY(50%);
-      }
+    a svg {
+      width: 100%;
+      height: auto;
     }
   }
 }

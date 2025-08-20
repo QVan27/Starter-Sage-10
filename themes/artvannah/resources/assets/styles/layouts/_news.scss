@@ -2,6 +2,8 @@
 @use '../mixins' as *;
 
 .news {
+  padding-bottom: $margin-xxl;
+
   &__filters {
     display: flex;
     justify-content: space-between;
