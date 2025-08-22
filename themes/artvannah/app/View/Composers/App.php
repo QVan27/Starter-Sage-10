@@ -10,6 +10,7 @@ class App extends Composer
   protected static $views = [
     'partials.head',
     'layouts.app',
+    'partials.header'
   ];
 
   public function with()
@@ -86,6 +87,7 @@ class App extends Composer
     $options = get_fields('options');
 
     return [
+      'socials' => $options['socials'],
       'debug' => $options['debug'],
       'instagram' => [
         'clientId' => get_option('clientid'),
