@@ -190,7 +190,7 @@ export default class Menu {
             this.$pathLogo.classList.add('i-logo__text--black')
             this.toggler.classList.add('header__burger--black')
             this.header.classList.add('header--hidden')
-          } else if (currentScroll < this.lastScroll - threshold) this.header.classList.remove('header-- 
+          } else if (currentScroll < this.lastScroll - threshold) this.header.classList.remove('header--hidden')
         } else {
           this.header.classList.remove('header--hidden')
           this.$pathLogo.classList.remove('i-logo__text--black')
