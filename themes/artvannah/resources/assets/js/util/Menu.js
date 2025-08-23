@@ -212,5 +212,7 @@ export default class Menu {
    * @returns {void}
    */
   // eslint-disable-next-line no-unused-vars
-  onPageChange(loc) { }
+  onPageChange(loc) {
+    this.menuOpen && this.close()
+  }
 }
