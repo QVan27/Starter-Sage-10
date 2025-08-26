@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div data-taxi-view>
+    <div data-taxi-view data-mode="{{ get_field('h_mode') }}">
         <div class="news">
             <div class="container-fluid">
                 <div class="row">

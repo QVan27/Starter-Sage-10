@@ -187,14 +187,10 @@ export default class Menu {
       window.requestAnimationFrame(() => {
         if (currentScroll > viewportHeight) {
           if (currentScroll > this.lastScroll + threshold) {
-            this.$pathLogo.classList.add('i-logo__text--black')
-            this.toggler.classList.add('header__burger--black')
             this.header.classList.add('header--hidden')
           } else if (currentScroll < this.lastScroll - threshold) this.header.classList.remove('header--hidden')
         } else {
           this.header.classList.remove('header--hidden')
-          this.$pathLogo.classList.remove('i-logo__text--black')
-          this.toggler.classList.remove('header__burger--black')
         }
 
         this.lastScroll = currentScroll
@@ -213,6 +209,17 @@ export default class Menu {
    */
   // eslint-disable-next-line no-unused-vars
   onPageChange(loc) {
+    const mode = document.querySelector('[data-mode]').dataset.mode
+    const isLightHeader = mode === 'light'
+
     this.menuOpen && this.close()
+
+    if (!isLightHeader) {
+      this.$pathLogo.classList.add('i-logo__text--black')
+      this.toggler.classList.add('header__burger--black')
+    } else {
+      this.$pathLogo.classList.remove('i-logo__text--black')
+      this.toggler.classList.remove('header__burger--black')
+    }
   }
 }

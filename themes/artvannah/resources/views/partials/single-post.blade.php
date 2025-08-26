@@ -1,4 +1,4 @@
-<article data-taxi-view>
+<article data-taxi-view data-mode="{{ get_field('h_mode') }}">
     <div class="single single-post">
         <section class="post-content">
             <div class="container">

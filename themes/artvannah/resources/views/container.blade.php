@@ -6,7 +6,7 @@
 
 @section('content')
   @while(have_posts()) @php(the_post())
-    <div data-taxi-view>
+    <div data-taxi-view data-mode="{{ get_field('h_mode') }}">
       <div class="template-container">
         <section class="b-gutenberg">
           <div class="container-fluid">
