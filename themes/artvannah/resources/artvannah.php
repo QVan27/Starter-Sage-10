@@ -53,6 +53,7 @@ if (function_exists('acf_add_local_field_group')) {
 
 require_once dirname(__DIR__) . '/resources/blocs-setup.php';
 require_once dirname(__DIR__) . '/resources/sync-acf.php';
+require_once dirname(__DIR__) . '/resources/forms.php';
 
 function remove_gutenberg_styles()
 {
@@ -100,25 +101,6 @@ remove_image_size('2048x2048');
 update_option('medium_large_size_w', '0');
 
 /**
- * Populate ACF select field options with Gravity Forms forms
- */
-function acf_populate_gf_forms_ids($field)
-{
-  if (class_exists('GFFormsModel')) {
-    $choices = [];
-
-    foreach (\GFFormsModel::get_forms() as $form) {
-      $choices[$form->id] = $form->title;
-    }
-
-    $field['choices'] = $choices;
-  }
-
-  return $field;
-}
-add_filter('acf/load_field/name=id-form', 'acf_populate_gf_forms_ids');
-
-/**
  * Change slug to camel case
  */
 function toCamelCase($string)
@@ -140,47 +122,6 @@ function wpb_custom_new_menu()
   register_nav_menu('footer_navigation', __('Footer'));
 }
 add_action('init', 'wpb_custom_new_menu');
-
-
-/**
- * Change GravityForms submit button
- */
-add_filter('gform_submit_button', 'input_to_button', 10, 2);
-
-function input_to_button($button, $form)
-{
-  $dom = new DOMDocument();
-  $dom->loadHTML('<?xml encoding="utf-8" ?>' . $button);
-  $input = $dom->getElementsByTagName('input')->item(0);
-  $new_button = $dom->createElement('button');
-
-  foreach ($input->attributes as $attribute) {
-    if ($attribute->name === 'class') $new_button->setAttribute('class', 'gform_button');
-    else $new_button->setAttribute($attribute->name, $attribute->value);
-  }
-
-  $new_button->setAttribute('aria-label', 'Form submit button');
-
-  $buttonComponent = \Roots\view('elements/button', [
-    'data' => [
-      'title' => $input->getAttribute('value'),
-      'url' => FALSE,
-      'target' => NULL,
-    ],
-    'is_link' => FALSE
-  ])->render();
-
-  $d = new DOMDocument();
-  libxml_use_internal_errors(true);
-  $d->loadHTML("<html>" . $buttonComponent . "</html>");
-  libxml_clear_errors();
-
-  $node = $dom->importNode($d->documentElement->firstChild, true);
-  $new_button->appendChild($node);
-
-  return $dom->saveHtml($new_button);
-}
-
 
 function artvannah_enable_gutenberg_post_ids($can_edit, $post)
 {
@@ -212,27 +153,6 @@ add_action('admin_menu', function () {
     unset($submenu['themes.php'][5]); // Apparances -> Thèmes
   }
 }, 999);
-
-/**
- * Allow editors to access Gravity Forms
- */
-function wd_gravity_forms_roles()
-{
-  $role = get_role('editor');
-  $role->add_cap('gform_full_access');
-}
-add_action('admin_init', 'wd_gravity_forms_roles');
-
-/* Remove H2 tag from error validation text */
-add_filter('gform_validation_message', 'change_message', 10, 2);
-function change_message($message, $form)
-{
-
-  return '<div class="gform_submission_error hide_summary">
-    <span class="gform-icon gform-icon--close"></span>
-    ' . __('Une erreur s’est produite lors de votre envoi. veuillez vérifier les champs ci-dessous.') . '
-</div>';
-}
 
 /**
  * Removes WordPress version number from the generator meta tag.

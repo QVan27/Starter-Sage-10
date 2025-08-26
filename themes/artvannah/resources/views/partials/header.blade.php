@@ -37,7 +37,7 @@
                                 <ul class="header__socials-list">
                                     @foreach ($options['socials'] as $social)
                                         <li class="header__socials-item">
-                                            <a class="u-upper header__socials-link" href="{{ $social['link']['url'] }}"
+                                            <a class="u-upper u-underline-hover header__socials-link" href="{{ $social['link']['url'] }}"
                                                 @if ($social['link']['target']) target="_blank" rel="noopener" @endif>
                                                 {{ $social['link']['title'] }}
                                             </a>

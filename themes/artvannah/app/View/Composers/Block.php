@@ -41,6 +41,15 @@ class Block extends Composer
     ];
   }
 
+  public static function form(array $data): array
+  {
+    return [
+      'titles' => Element::title($data),
+      'address' => $data['address'],
+      'id' => $data['id-form']
+    ];
+  }
+
   public static function flexibleContent(string $fieldName): array
   {
     $fields = get_field($fieldName);

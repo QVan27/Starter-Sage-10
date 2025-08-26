@@ -1,0 +1,187 @@
+@use '../config' as *;
+
+$form-font: $font-default;
+$font-color: $black;
+
+// There's 2 predefined classes that you can use on form fields to build your form
+// By default a field is displayed fullwidth with a label
+// .half - Add this class to make a field half width
+// .no-label - Add this class to hide the label of a field (only the placeholder is shown)
+
+form {
+  .af-fields {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+
+    > .af-field {
+      position: relative;
+      width: 100%;
+      border: none;
+      list-style-type: none;
+      margin: 0 0 1.5rem;
+      padding: 0 1rem;
+
+      @include media-breakpoint-up(md) {
+        margin: 0 0 2rem;
+      }
+    }
+  }
+
+  .af-field {
+    &.half {
+      width: 100%;
+
+      @include media-breakpoint-up(md) {
+        width: 50%;
+      }
+    }
+
+    &.no-label .af-label {
+      display: none;
+    }
+  }
+
+  .af-input {
+    position: relative;
+    margin: 0;
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 1.6rem 2rem;
+      border: 0;
+      border-radius: 0;
+      background-color: $white;
+      color: $font-color;
+      font-family: $form-font;
+      outline: none;
+      appearance: none;
+      border-bottom: max(0.1rem, 1px) solid rgba($color: $black, $alpha: 0.1);
+      resize: none;
+      transition: border-bottom-color 0.3s $ease-smooth;
+
+      &:focus-visible {
+        border-bottom-color: rgba($color: $black, $alpha: 1);
+      }
+
+      &::placeholder {
+        font-family: $form-font;
+        color: $font-color;
+      }
+
+      &[type='file'] {
+        cursor: pointer;
+      }
+
+      &[type='text'],
+      &[type='email'] {
+        padding: 1.6rem 2rem;
+      }
+
+      &[type='radio'],
+      &[type='checkbox'] {
+        position: relative;
+        flex: 0 0 1.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 0.5rem 1.5rem 0 0;
+        padding: 0 !important;
+        border-radius: 0;
+        border: solid max(0.1rem, 1px) $black;
+        background-color: $white;
+        appearance: none;
+        outline: none;
+        overflow: hidden;
+        cursor: pointer;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0.2rem;
+          top: 0.2rem;
+          transform: translate(1.5rem, 1.5rem);
+          transition: transform 0.5s $ease-out;
+          width: 0.9rem;
+          height: 0.9rem;
+          background-color: $black;
+        }
+
+        &:checked::after {
+          transform: translate(0);
+        }
+      }
+    }
+
+    select {
+      cursor: pointer;
+
+      option {
+        color: $black;
+      }
+    }
+
+    &:has(select) {
+      position: relative;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 2rem;
+        transform: translateY(-50%);
+        background: center / contain no-repeat url('../images/svg/arrow.svg');
+        width: 0.7rem;
+        height: 0.3rem;
+        pointer-events: none;
+      }
+    }
+
+    .acf-true-false {
+      display: flex;
+
+      input[type='radio'],
+      input[type='checkbox'] {
+        flex: 0 0 1.1rem;
+        width: 1.1rem;
+        height: 1.1rem;
+
+        &::after {
+          left: max(0.1rem, 1px);
+          top: max(0.1rem, 1px);
+          width: 0.7rem;
+          height: 0.7rem;
+        }
+      }
+
+      label > .message {
+        @include tag;
+      }
+    }
+  }
+
+  fieldset {
+    border: 0;
+  }
+
+  legend {
+    font-style: italic;
+  }
+}
+
+.acf-notice {
+  padding: 1rem;
+
+  &.-error {
+    background: $danger;
+    border: 0;
+  }
+
+  &.acf-notice-dismiss {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

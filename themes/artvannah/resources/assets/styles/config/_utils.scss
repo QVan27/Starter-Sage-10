@@ -1,6 +1,6 @@
 @use "../config/breakpoints" as *;
 @use "../config/sizes" as *;
-
+@use "../config/variables" as *;
 
 .u-nsb {
   /* stylelint-disable-next-line */
@@ -60,3 +60,29 @@
 }
 
 .u-upper { text-transform: uppercase; }
+
+.u-underline-hover {
+  @media (hover: hover) {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      top: 100%;
+      left: 0;
+      pointer-events: none;
+      transform-origin: 100% 50%;
+      transform: scale3d(0, 1, 1);
+      transition: transform 0.5s $ease-smooth;
+    }
+
+    &:hover::before {
+      transform-origin: 0% 50%;
+      transform: scale3d(1, 1, 1);
+    }
+  }
+}

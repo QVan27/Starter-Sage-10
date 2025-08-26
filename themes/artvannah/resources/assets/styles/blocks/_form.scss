@@ -1,0 +1,19 @@
+@use "../config" as *;
+@use "../mixins" as *;
+
+.b-form {
+  position: relative;
+  padding: $margin-xxl 0;
+
+  &__content {
+    margin-bottom: $margin-m;
+
+    h2 { margin-bottom: $margin-m; }
+
+    h3 { margin-bottom: $margin-m; }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &__content { margin-bottom: 0; }
+  }
+}
