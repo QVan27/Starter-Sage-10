@@ -3,7 +3,7 @@
   Description: Newsletter section
   Category: template-blocks
   Icon: align-center
-  Post-Type: page post
+  Post-Type: page
   Keywords: newsletter
 --}}
 

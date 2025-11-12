@@ -3,7 +3,7 @@
   Description: Une ou deux colonnes : contenu / médias
   Category: template-blocks
   Icon: columns
-  Post-Type: post page
+  Post-Type: page
   Keywords: contenu colonnes flexible image vidéo média
 --}}
 

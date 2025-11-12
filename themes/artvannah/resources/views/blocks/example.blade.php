@@ -3,7 +3,7 @@
   Description: Description of example
   Category: template-blocks
   Icon: hammer
-  Post-Type: page post
+  Post-Type: page
   Keywords: example
 --}}
 

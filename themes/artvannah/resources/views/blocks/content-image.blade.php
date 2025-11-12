@@ -3,7 +3,7 @@
   Description: Content Image section
   Category: template-blocks
   Icon: columns
-  Post-Type: page post
+  Post-Type: page
   Keywords: content image
 --}}
 

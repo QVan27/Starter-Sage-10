@@ -7,7 +7,7 @@
   left: 0;
   width: 100%;
   z-index: $z-header;
-  margin-top: $margin-l;
+  margin-top: $margin-m;
   transition: transform 0.7s $ease-out;
 
   &--hidden { transform: translateY(-50vh); }
@@ -185,6 +185,8 @@
   }
 
   @include media-breakpoint-up(lg) {
+    margin-top: $margin-l;
+
     &__menu { width: subcol(24, 18); }
   }
 }

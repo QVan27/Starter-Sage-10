@@ -3,7 +3,7 @@
   Description: Hero section
   Category: template-blocks
   Icon: cover-image
-  Post-Type: page post
+  Post-Type: page
   Keywords: hero cover banner
 --}}
 

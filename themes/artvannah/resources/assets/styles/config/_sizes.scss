@@ -42,11 +42,11 @@
 }
 
 @mixin body-s() {
-  font: $normal 1.6rem/1.15 $font-default;
+  font: $normal 1.6rem/1.5 $font-default;
 }
 
 @mixin body-s-light() {
-  font: $light 1.6rem/1.15 $font-default;
+  font: $light 1.6rem/1.5 $font-default;
 }
 
 @mixin tag() {

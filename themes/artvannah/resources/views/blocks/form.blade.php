@@ -3,7 +3,7 @@
   Description: Formulaire & informations de contact
   Category: template-blocks
   Icon: welcome-widgets-menus
-  Post-Type: page post
+  Post-Type: page
   Keywords: form formulaire contact
 --}}
 

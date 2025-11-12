@@ -3,7 +3,7 @@
   Description: Posts Carousel section
   Category: template-blocks
   Icon: slides
-  Post-Type: page post
+  Post-Type: page
   Keywords: posts carousel
 --}}
 

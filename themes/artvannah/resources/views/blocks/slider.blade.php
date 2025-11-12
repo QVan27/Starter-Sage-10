@@ -3,7 +3,7 @@
   Description: Slider section
   Category: template-blocks
   Icon: slides
-  Post-Type: page post
+  Post-Type: page
   Keywords: slider
 --}}
 
