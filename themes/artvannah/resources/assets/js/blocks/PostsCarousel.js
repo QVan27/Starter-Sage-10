@@ -4,8 +4,6 @@ import { gsap } from 'gsap'
 
 export default class PostsCarousel extends Block {
   onEnterCompleted() {
-    this.$pagerLeft.classList.add('is-disabled')
-
     this.createSlider()
   }
 
@@ -19,46 +17,42 @@ export default class PostsCarousel extends Block {
     this.$wrapper = this.container.querySelector('.b-posts-carousel__wrapper')
     this.$slides = this.container.querySelectorAll('.c-post-card')
 
-    this.$pagerLeft = this.el.querySelector('.b-posts-carousel__pagers .pager--prev')
-    this.$pagerRight = this.el.querySelector('.b-posts-carousel__pagers .pager--next')
+    this.$pagerLeft = this.el.querySelector('.pager--prev')
+    this.$pagerRight = this.el.querySelector('.pager--next')
+
+    this.space = parseInt(getComputedStyle(this.$wrapper).gap)
+    this.slideWidth = this.$slides[0].offsetWidth + this.space
   }
 
   events() {
-    this.$pagerLeft && this.$pagerLeft.addEventListener('click', this.prevSlide)
-    this.$pagerRight && this.$pagerRight.addEventListener('click', this.nextSlide)
+    this.$pagerLeft?.addEventListener('click', this.prevSlide)
+    this.$pagerRight?.addEventListener('click', this.nextSlide)
   }
 
   createSlider() {
     this.slider = new SlideManager({
       el: this.$wrapper,
+      length: this.$slides.length,
+      pager: {
+        prevEl: this.$pagerLeft,
+        nextEl: this.$pagerRight,
+        getVisibleSlides: () => Math.floor(this.container.offsetWidth / this.slideWidth)
+      },
       callback: (event) => {
-        this.oldIndex = event.previous
         this.currentIndex = event.new
-        this.direction = event.direction
-
-        this.onSlideChange()
-          .then(() => {
-            this.slider.done()
-          })
+        this.onSlideChange().then(() => this.slider.done())
       }
     })
   }
 
   onSlideChange() {
     return new Promise((resolve) => {
-      const slideWidth = this.$slides[0].offsetWidth + 30;
-      const newTransformValue = -this.currentIndex * slideWidth;
-
       gsap.to(this.$wrapper, {
-        x: newTransformValue,
-        duration: 0.3,
-        ease: 'sine.out'
+        x: -this.currentIndex * this.slideWidth,
+        duration: 1.2,
+        ease: 'expo.out',
+        onStart: resolve
       })
-
-      this.$pagerLeft.classList.toggle('is-disabled', this.currentIndex === 0)
-      this.$pagerRight.classList.toggle('is-disabled', this.currentIndex === this.$slides.length - 1)
-
-      resolve()
     })
   }
 
@@ -71,12 +65,12 @@ export default class PostsCarousel extends Block {
   }
 
   resize() {
-    const slideWidth = this.$slides[0].offsetWidth + 30
-    const newTransformValue = -this.currentIndex * slideWidth
+    this.slideWidth = this.$slides[0].offsetWidth + this.space
 
-    gsap.to(this.$wrapper, {
-      x: newTransformValue,
-      duration: 0
+    gsap.set(this.$wrapper, {
+      x: -this.currentIndex * this.slideWidth
     })
+
+    this.slider.updatePagerState()
   }
 }

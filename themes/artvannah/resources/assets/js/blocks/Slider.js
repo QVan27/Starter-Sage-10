@@ -56,6 +56,7 @@ export default class Slider extends Block {
       el: this.$wrapper,
       auto: true,
       length: this.slides.length,
+      loop: true,
       callback: (event) => {
         this.oldIndex = event.previous
         this.currentIndex = event.new
@@ -74,8 +75,6 @@ export default class Slider extends Block {
   }
 
   initSlide() {
-    this.$pagerLeft.classList.add('is-disabled')
-
     this.slides[this.currentIndex].container.classList.add('is-active')
     this.slides[this.currentIndex].imageContainer.classList.add('is-active')
 
@@ -107,9 +106,6 @@ export default class Slider extends Block {
 
       newSlide.container.classList.add('is-active')
       newSlide.imageContainer.classList.add('is-active')
-
-      this.$pagerLeft.classList.toggle('is-disabled', this.currentIndex === 0)
-      this.$pagerRight.classList.toggle('is-disabled', this.currentIndex === this.slides.length - 1)
 
       const tl = gsap.timeline({
         onComplete: () => {

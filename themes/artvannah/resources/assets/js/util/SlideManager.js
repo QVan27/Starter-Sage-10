@@ -62,6 +62,7 @@ export default class SlideManager {
     }
 
     this.options = Object.assign(defaults, opt)
+    this.pager = opt.pager || null
 
     if (opt.startAt !== this.index && opt.startAt > 0) {
       if (opt.startAt > this.max) this.index = this.max
@@ -105,6 +106,8 @@ export default class SlideManager {
     }
 
     if (this.options.swipe) this.events()
+
+    this.updatePagerState()
 
     return this
   }
@@ -194,6 +197,7 @@ export default class SlideManager {
     }
 
     this.index = checkedIndex
+    this.updatePagerState()
     this.options.callback(event)
   }
 
@@ -204,6 +208,23 @@ export default class SlideManager {
     this.changing = false
 
     if (this.options.auto) this.startAuto()
+  }
+
+  /**
+   * Update pager state
+   */
+  updatePagerState() {
+    if (!this.pager) return
+
+    const { prevEl, nextEl, getVisibleSlides } = this.pager
+    if (!prevEl || !nextEl || !getVisibleSlides) return
+
+    const visibleSlides = getVisibleSlides()
+    const isAtStart = this.index === 0
+    const isAtEnd = this.index >= this.max - visibleSlides
+
+    prevEl.classList.toggle('is-disabled', isAtStart)
+    nextEl.classList.toggle('is-disabled', isAtEnd)
   }
 
   // Private functions
@@ -279,21 +300,18 @@ export default class SlideManager {
   handleSwipe() {
     if (this.changing) return
 
-    if (this.options.vertical) {
-      if (this.touch.endY < this.touch.startY && this.touch.startY - this.touch.endY >= this.options.threshold) {
-        if (this.isGoingToX()) this.callback(-1)
-      }
-      if (this.touch.endY > this.touch.startY && this.touch.endY - this.touch.startY >= this.options.threshold) {
-        if (this.isGoingToX()) this.callback(1)
-      }
-    } else {
-      if (this.touch.endX < this.touch.startX && this.touch.startX - this.touch.endX >= this.options.threshold) {
-        if (this.isGoingToY()) this.callback(-1)
-      }
-      if (this.touch.endX > this.touch.startX && this.touch.endX - this.touch.startX >= this.options.threshold) {
-        if (this.isGoingToY()) this.callback(1)
-      }
-    }
+    const dx = this.touch.endX - this.touch.startX
+    const dy = this.touch.endY - this.touch.startY
+
+    let direction = 0
+
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) >= this.options.threshold) direction = dx > 0 ? 1 : -1
+
+    if (direction === 0) return
+
+    if (this.options.canSwipe && !this.options.canSwipe(direction)) return
+
+    this.callback(direction)
   }
 
   /**
@@ -417,6 +435,7 @@ export default class SlideManager {
     if (this.options.auto) this.stopAuto()
 
     this.index = index
+    this.updatePagerState()
     this.options.callback(event)
   }
 }
