@@ -17,7 +17,6 @@ export default class Mousemove {
     this.cb = cb
     this.mobile = mobile
 
-    // eslint-disable-next-line
     this.el = typeof el === 'string' ? document.querySelector(el) : (el === undefined ? document : el)
     this.run = this.run.bind(this)
   }

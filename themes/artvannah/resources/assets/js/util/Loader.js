@@ -32,7 +32,6 @@ export default class Loader {
         }
       })
 
-      // eslint-disable-next-line prefer-reflect
       tl
         .to(store.panel, {
           opacity: 0,

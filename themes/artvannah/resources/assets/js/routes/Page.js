@@ -53,7 +53,6 @@ export default class Page extends Renderer {
         const { fileName, hasMobileBlock } = this.blockList[i]
         const file = store.detect.isMobile && hasMobileBlock ? 'mobile/' + fileName : fileName
 
-        // eslint-disable-next-line no-loop-func
         import(/* @vite-ignore */ '../blocks/' + file).then(({ default: BlockInstance }) => {
           loadedBlocks++
           block.instances.push({

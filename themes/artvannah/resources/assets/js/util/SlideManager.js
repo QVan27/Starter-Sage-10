@@ -1,4 +1,3 @@
-/* eslint-disable */
 /**
  * @class SlideManager
  * @classdesc Manage slides for a slideshow.

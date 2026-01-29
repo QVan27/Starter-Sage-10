@@ -28,7 +28,6 @@ export default class Parallax {
 
       if (offset) {
         for (let k = 0; k < offset.length; k++) {
-          // eslint-disable-next-line max-depth
           if (offset[k].includes('%')) {
             relativeOffset[k] = parseInt(offset[k].replace('%', '') * store.w.h) / 100
           } else {

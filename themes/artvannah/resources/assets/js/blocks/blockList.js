@@ -1,4 +1,3 @@
-/* eslint-disable no-inline-comments */
 const blockList = [
   {
     name: 'social-media',

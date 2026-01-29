@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import 'whatwg-fetch'
 import 'intersection-observer'
 
