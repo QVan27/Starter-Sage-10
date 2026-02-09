@@ -89,4 +89,12 @@
 
 .u-font-mono {
   font: 500 1.2rem / 1.33 'IBM Plex Mono', monospace;
+
+  &.-tag {
+    font-size: 0.875rem;
+    line-height: 1.43;
+    letter-spacing: 0.05em;
+  }
 }
+
+.u-upper { text-transform: uppercase; }

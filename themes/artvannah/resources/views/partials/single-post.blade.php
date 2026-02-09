@@ -5,7 +5,7 @@
                 <div class="row flex-lg-row-reverse justify-content-lg-end align-items-lg-start">
                     <div class="col-24 col-md-22 offset-md-1 col-lg-3 offset-xl-7">
                         <div class="post-hero__category">
-                            <span class="u-font-tag-bold">@category</span>
+                            <span class="u-font-mono -tag u-upper">@category</span>
                         </div>
                     </div>
                     <div class="col-24 col-md-22 offset-md-1 col-lg-18 col-xl-12">

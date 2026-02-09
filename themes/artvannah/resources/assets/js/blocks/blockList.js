@@ -14,6 +14,10 @@ const blockList = [
     fileName: 'Button'
   },
   {
+    name: 'c-post-card',
+    fileName: 'PostCard'
+  },
+  {
     name: 'b-slider',
     fileName: 'Slider'
   },

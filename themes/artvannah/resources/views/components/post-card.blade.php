@@ -7,7 +7,7 @@
         @endif
         <div class="c-post-card__header u-font-tag-bold">
             @if (!empty($data['category']))
-                <span class="c-post-card__category">{{ $data['category'] }}</span>
+                <span class="u-font-mono -tag u-upper c-post-card__category">{{ $data['category'] }}</span>
             @endif
             @if (!empty($data['date']))
                 <time class="c-post-card__date" datetime="{{ get_post_time('c', $post->ID ?? 0) }}">

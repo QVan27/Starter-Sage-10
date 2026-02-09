@@ -4,12 +4,12 @@
 @endphp
 
 @if ($is_link)
-    <a class="button u-font-mono @if ($color) {{ $color }} @endif" href="{{ $data['url'] }}"
+    <a class="button u-upper u-font-mono @if ($color) {{ $color }} @endif" href="{{ $data['url'] }}"
         @if ($data['target']) target="_blank" rel="noopener" @endif>
         {{ $data['title'] }}
     </a>
 @else
-    <div class="button u-font-mono @if ($color) {{ $color }} @endif">
+    <div class="button u-upper u-font-mono @if ($color) {{ $color }} @endif">
         {{ $data['title'] }}
     </div>
 @endif
