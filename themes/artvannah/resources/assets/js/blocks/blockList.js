@@ -10,6 +10,10 @@ const blockList = [
     fileName: 'Video'
   },/* generated class */
   {
+    name: 'button',
+    fileName: 'Button'
+  },
+  {
     name: 'b-slider',
     fileName: 'Slider'
   },

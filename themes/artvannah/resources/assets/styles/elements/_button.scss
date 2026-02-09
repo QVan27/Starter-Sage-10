@@ -7,6 +7,7 @@
   background-color: $white;
   color: $black;
   cursor: pointer;
+  text-transform: uppercase;
 
   &.dark {
     background-color: $black;
@@ -14,7 +15,7 @@
   }
 
   @media (hover: hover) {
-    transition: background-color 0.3s linear, color 0.3s linear;
+    transition: background-color 1s $ease-out, color 1s $ease-out;
 
     &:hover {
       background-color: $black;
