@@ -1,10 +1,21 @@
 import { defineConfig } from 'vite'
 import laravel from 'laravel-vite-plugin'
-import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
+import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin'
+import eslint from 'vite-plugin-eslint'
+import stylelint from 'vite-plugin-stylelint'
 
 export default defineConfig({
   base: '/',
   plugins: [
+    eslint({
+      cache: false,
+      fix: false,
+      include: ['resources/assets/js/**/*.js']
+    }),
+    stylelint({
+      fix: false,
+      include: ['resources/assets/styles/**/*.scss']
+    }),
     laravel({
       input: [
         'resources/assets/styles/main.scss',

@@ -1,0 +1,62 @@
+module.exports = {
+  extends: [
+    'stylelint-config-standard-scss',
+  ],
+  plugins: [
+    'stylelint-scss',
+    'stylelint-order',
+  ],
+  rules: {
+    'annotation-no-unknown': null,
+    'at-rule-empty-line-before': null,
+    'order/properties-alphabetical-order': null,
+    'no-empty-source': null,
+    'no-descending-specificity': null,
+    'scss/dollar-variable-pattern': null,
+    'scss/at-rule-conditional-no-parentheses': null,
+    'scss/at-if-closing-brace-newline-after': null,
+    'scss/at-if-closing-brace-space-after': null,
+    'scss/at-else-empty-line-before': null,
+    'scss/operator-no-unspaced': null,
+    'scss/operator-no-newline-after': null,
+    'scss/double-slash-comment-empty-line-before': null,
+    'scss/no-global-function-names': null,
+    'scss/dollar-variable-empty-line-before': null,
+    'media-feature-range-notation': null,
+    'property-no-vendor-prefix': null,
+    'property-no-unknown': [
+      true,
+      {
+        ignoreProperties: [
+          'aspect-ratio',
+          'place-items',
+          'gap',
+          '-webkit-text-size-adjust',
+          '-ms-overflow-style',
+          'scrollbar-width',
+          'appearance',
+        ],
+      },
+    ],
+    'selector-class-pattern': null,
+    'color-function-alias-notation': null,
+    'color-function-notation': null,
+    'alpha-value-notation': null,
+    'shorthand-property-no-redundant-values': null,
+    'value-keyword-case': null,
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: [
+          'use', 'forward', 'extend',
+          'at-root', 'debug', 'warn', 'error',
+          'if', 'else', 'for', 'each', 'while',
+          'mixin', 'include', 'content',
+          'return', 'function',
+          'tailwind', 'apply', 'responsive',
+          'variants', 'screen',
+        ],
+      },
+    ],
+  },
+}
