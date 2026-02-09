@@ -1,4 +1,4 @@
-import App from './app'
+import App from './App'
 import store from './util/store'
 
 if (store.debug) {
@@ -7,11 +7,11 @@ if (store.debug) {
   })
 }
 
-// if (!store.detect.isMobile) {
-//   import('./util/Parallax').then(({ default: Parallax }) => {
-//     store.modules.parallax = new Parallax()
-//   })
-// }
+if (!store.detect.isMobile) {
+  import('./util/Parallax').then(({ default: Parallax }) => {
+    store.modules.parallax = new Parallax()
+  })
+}
 
 window.addEventListener('load', () => {
   new App()

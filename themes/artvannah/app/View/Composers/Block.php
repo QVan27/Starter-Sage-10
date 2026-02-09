@@ -36,7 +36,7 @@ class Block extends Composer
   public function hero(array $data): array
   {
     return [
-      'image' => Element::image($data['image'], '100vw'),
+      'image' => Element::image($data['image'], '100vw', null, true),
       'classicContent' => Component::classicContent($data),
     ];
   }

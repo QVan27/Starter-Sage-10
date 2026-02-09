@@ -7,8 +7,8 @@
   Keywords: hero cover banner
 --}}
 
-<section class="b-hero">
-    <div class="b-hero__image">
+<section class="b-hero u-overflow-clip">
+    <div class="b-hero__image" data-parallax='1' data-offset="100%">
         @include('elements.image', ['data' => $image])
     </div>
     <div class="container-fluid">
